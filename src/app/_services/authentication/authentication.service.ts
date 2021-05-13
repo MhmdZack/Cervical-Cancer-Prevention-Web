@@ -12,16 +12,23 @@ import { ApiResponse } from '../../_models/api-response';
 })
 export class AuthenticationService {
   public apiresponse: ApiResponse | any;
+  private authSource = new BehaviorSubject(false);
+  currentState = this.authSource.asObservable();
   constructor(
     private httpClient: HttpClient,
     private router: Router
   ) {
 
-    this.userSubject = new BehaviorSubject<User | null>(null); // JSON.parse(localStorage.getItem('user')!)
+    this.userSubject = new BehaviorSubject<User | null>(null);  JSON.parse(localStorage.getItem('user')!)
     this.user = this.userSubject.asObservable();
   }
 
   public get userValue(): User | null {
+   if(this.userSubject.value != null) {
+      this.changeLoginState(true);
+    } else {
+      this.changeLoginState(false);
+    }
     return this.userSubject.value;
   }
 
@@ -35,6 +42,9 @@ export class AuthenticationService {
     return this.user.pipe(map(u => !!u));
   }
 
+  changeLoginState(loginState: boolean) {
+    this.authSource.next(loginState);
+  }
 
   login(username: string, password: string)
   {
@@ -42,7 +52,7 @@ export class AuthenticationService {
                           .pipe(
                             map((response: ApiResponse) => {
                             const user = response.data;
-                            // localStorage.setItem('user', JSON.stringify(user));
+                            localStorage.setItem('user', JSON.stringify(user));
                             this.userSubject.next(user);
                             this.startRefreshTokenTimer();
                             return response;
@@ -59,7 +69,7 @@ export class AuthenticationService {
     this.httpClient.post<any>(`${environment.baseWebApiUrl}/Authentication/revoke-token`, {token: refreshtoken})
                    .subscribe();
     this.stopRefreshTokenTimer();
-    // localStorage.removeItem('user');
+    localStorage.removeItem('user');
     this.userSubject.next(null);
     this.router.navigate(['/account/login']);
 }
@@ -71,7 +81,7 @@ refreshToken(refreshtoken: string) {
   return this.httpClient.post<any>(`${environment.baseWebApiUrl}/Authentication/refresh-token`, {token: refreshtoken})
       .pipe(map((response: ApiResponse) => {
         const user = response.data;
-        // localStorage.setItem('user', JSON.stringify(user));
+         localStorage.setItem('user', JSON.stringify(user));
         this.userSubject.next(user);
         this.startRefreshTokenTimer();
         return response;

@@ -24,6 +24,8 @@ import { GlobalErrorService } from './_services/error/global-error.service';
 import { HeaderComponent } from './_components/header/header.component';
 import { ToastComponent } from './_components/toast/toast.component';
 import { ManageUserComponent } from './_components/user/manage-user/manage-user.component';
+import { DashboardComponent } from './_components/dashboard/dashboard.component';
+import { SidenavComponent } from './_components/sidenav/sidenav.component';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { ManageUserComponent } from './_components/user/manage-user/manage-user.
     LoadingComponent,
     ToastComponent,
     ManageUserComponent,
+    DashboardComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,

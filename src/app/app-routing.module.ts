@@ -4,8 +4,10 @@ import { UserListComponent } from './_components/user/user-list/user-list.compon
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './_shared/auth.guard';
+import { DashboardComponent } from './_components/dashboard/dashboard.component';
 
 const routes: Routes = [
+  { path: 'dashboard', component: DashboardComponent},
   { path: '', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'users', component: UserListComponent, canActivate: [AuthGuard]},
   { path: 'manageuser', component: ManageUserComponent , canActivate: [AuthGuard]},

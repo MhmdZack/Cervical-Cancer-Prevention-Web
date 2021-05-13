@@ -11,7 +11,8 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  isAuthenticated: boolean = false;
+  isAuth: boolean = false;
   form!: FormGroup;
   submitted = false;
 
@@ -21,9 +22,15 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private router: Router,
     private injector: Injector
-  ) { }
+  ) { 
+    localStorage.removeItem('user');
+    if(localStorage.getItem('user') === null)
+        this.isAuth = false;
+
+  }
 
   ngOnInit(): void {
+    
     this.form = this.formBuilder.group(
       {
         username: ['', Validators.required],
@@ -47,8 +54,9 @@ export class LoginComponent implements OnInit {
                               .pipe(first())
                               .subscribe({
                                 next: () => {
-                                  const returnUrl =  this.route.snapshot.queryParams.returnUrl || '/';
-                                  this.router.navigateByUrl(returnUrl);
+                                  //const returnUrl =  this.route.snapshot.queryParams.returnUrl || '/';
+                                  //this.router.navigateByUrl(returnUrl);
+                                  this.router.navigate(['/dashboard']);
                                   this.injector.get(ToastService).success('Authentication Successful');
                                 },
                                 error: err => {
