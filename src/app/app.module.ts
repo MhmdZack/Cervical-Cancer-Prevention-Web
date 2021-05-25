@@ -26,6 +26,13 @@ import { ToastComponent } from './_components/toast/toast.component';
 import { ManageUserComponent } from './_components/user/manage-user/manage-user.component';
 import { DashboardComponent } from './_components/dashboard/dashboard.component';
 import { SidenavComponent } from './_components/sidenav/sidenav.component';
+import { ScreeningcenterComponent } from './_components/screeningcenter/screeningcenter.component';
+import { CustomerMasterComponent } from './_components/customer-master/customer-master.component';
+import { CreateCustomerMasterComponent } from './_components/customer-master/create-customer-master/create-customer-master.component';
+import { EditCustomerComponent } from './_components/customer-master/edit-customer/edit-customer.component';
+import { CreateScreencenterComponent } from './_components/screeningcenter/create-screencenter/create-screencenter.component';
+import { EditScreenCenterComponent } from './_components/screeningcenter/edit-screen-center/edit-screen-center.component';
+import { CustomerSideContainerComponent } from './_components/customer-master/customer-side-container/customer-side-container.component';
 
 
 @NgModule({
@@ -42,6 +49,13 @@ import { SidenavComponent } from './_components/sidenav/sidenav.component';
     ManageUserComponent,
     DashboardComponent,
     SidenavComponent,
+    ScreeningcenterComponent,
+    CustomerMasterComponent,
+    CreateCustomerMasterComponent,
+    EditCustomerComponent,
+    CreateScreencenterComponent,
+    EditScreenCenterComponent,
+    CustomerSideContainerComponent,
   ],
   imports: [
     BrowserModule,

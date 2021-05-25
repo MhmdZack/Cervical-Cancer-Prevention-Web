@@ -1,0 +1,63 @@
+<div class="content-wrapper">
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <!-- <div class="card-header">
+                  <h3 class="card-title">Create Customer</h3>
+                </div> -->
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Customer Code</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" formControlName="CustomerCode" placeholder="Customer Code" [ngClass]="{ 'is-invalid': submitted && formControls.CustomerCode.errors }">
+                      <div *ngIf="submitted && formControls.CustomerCode.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.CustomerCode.errors.required">Customer Code is required</div>
+                        <div *ngIf="formControls.CustomerCode.errors.serverError">{{ formControls.CustomerCode.errors.serverError}}</div>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Customer Name</label>
+                      <input type="text" class="form-control" formControlName="CustomerName" id="exampleInputPassword1" placeholder="Customer Name" [ngClass]="{ 'is-invalid': submitted && formControls.CustomerName.errors }">
+                      <div *ngIf="submitted && formControls.CustomerName.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.CustomerName.errors.required">Customer Name is required</div>
+                        <div *ngIf="formControls.CustomerName.errors.serverError">{{ formControls.CustomerName.errors.serverError}}</div>
+                       </div>
+                    </div>
+                    <div class="form-check custom-control custom-checkbox">
+                     <input type="checkbox" formControlName="IsActive"  class="form-check-input" id="defaultCheck1" >
+                      <label class="form-check-label" for="defaultCheck1">Check me out</label>
+                     <!--   <div *ngIf="submitted && formControls.IsActive.errors" class="invalid-feedback">
+                        <div *ngIf="formControls.IsActive.errors.required">Customer Status is required</div>
+                        <div *ngIf="formControls.IsActive.errors.serverError">{{ formControls.IsActive.errors.serverError}}</div>
+                       </div> -->
+
+                      
+                        <!-- <input type="checkbox" class="custom-control-input" id="checkbox_1" formControlName="IsActive">
+                        <label class="custom-control-label" for="checkbox_1">Active</label> -->
+                    
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+  
+                  <div class="card-footer">
+                    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                    <div class="row">
+                      <div class="col-6">
+                          <button class="btn btn-primary btn-block">Submit</button>
+                      </div>
+                      <div class="col-6">
+                          <button type="submit" class="btn btn-secondary btn-block disabled">Cancel</button>
+                      </div>
+                  </div>
+                  </div>
+                </form>
+              </div>
+        </div>
+       </div>
+    </div>
+</section>
+</div>

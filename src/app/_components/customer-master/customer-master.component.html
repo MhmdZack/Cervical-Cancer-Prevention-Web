@@ -1,0 +1,116 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h4 class="m-0 text-dark">Administration</h4>
+        </div><!-- /.col -->
+       
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+
+   
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Main row -->
+          <div class="col-md-4">
+            <div class="card">
+             
+                   
+                        <app-customer-side-container *ngIf="customers.length" [CustomerList] = "customers" ></app-customer-side-container>
+                   
+                
+            </div>
+          </div>
+        
+
+             <div class="clearfix hidden-md-up"></div>
+        
+        
+          <!-- Left col -->
+          <div class="col-md-8">
+           <!-- TABLE: LATEST ORDERS -->
+            <div class="card">
+                <div class="card-header border-transparent">
+
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Add Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Edit Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Schema</a>
+                    </li>
+                </ul>
+                    <!-- <div style="float:left;"><h3 class="card-title">Customers</h3></div>
+                    <div style="float:right;"><a [routerLink]="['/createcustomer']" class="btn btn-sm btn-info float-left">Add New Customer</a></div> -->
+                </div>
+                
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <app-create-customer-master></app-create-customer-master>
+                  </div>
+                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <app-edit-customer></app-edit-customer>
+                  </div>
+                  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    Schema New Customer 3
+                  </div>
+                </div>
+
+                
+              <!-- /.card-header -->
+              <!-- <div class="card-body p-0">
+                <div class="table-responsive">
+                  <table class="table m-0">
+                    <thead>
+                    <tr>
+                      <th>Customer Name</th>
+                      <th>Created On</th>
+                      <th>Modifiedby On</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let customer of customers let i = index">
+                        <td>{{customer.customerName}}</td>
+                        <td>{{customer.createdOn}}</td>
+                        <td>{{customer.modifiedOn}}</td>
+                        <td>
+                            <ng-container *ngIf="customer.isActive === 1">Active</ng-container>
+                            <ng-container *ngIf="customer.isActive === 0">InActive</ng-container>
+                        </td>
+                        <td>
+                            <span class="badge badge-success"><a [routerLink]="['/editecustomer']" >Update</a></span> |
+                            <span class="badge badge-danger">Delete</span>
+                        </td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+               </div> -->
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <!-- <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a> -->
+              </div>
+              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+          </div>
+         
+        </div>
+        <!-- /.row -->
+      </div><!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
